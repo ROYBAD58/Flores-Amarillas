@@ -3,7 +3,7 @@
 ========================================= */
 
 const mensaje =
-"Se que no son colabs con Sheglam para coleccionar, por ahora, jsjs, pero es lo que sé, mi conocimiento, mi mente y mi corazón todas puestos en ti para demostrarte cuando lindo es el amor que tengo por ti y lo lindo que me hace sentir el tuyo, te amo musho Muki, espero te guste, lo hice con mucho amor :3";
+"Se que no son colabs con Sheglam para coleccionar, por ahora, jsjs, pero es lo que sé, mi conocimiento, mi mente y mi corazón todas puestos en ti para demostrarte cuan lindo es el amor que tengo por ti y lo lindo que me hace sentir el tuyo, te amo musho Muki, espero te guste, lo hice con mucho amor :3";
 
 
 /* =========================================
