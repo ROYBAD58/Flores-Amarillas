@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Flores Amarillas</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         PANTALLA INICIAL
+    ========================== -->
+
+    <section id="inicio">
+
+        <div id="florInicial">
+
+            <svg viewBox="0 0 100 100">
+
+                <g class="florInicialSvg">
+
+                    <ellipse cx="50" cy="25" rx="11" ry="22"/>
+                    <ellipse cx="50" cy="25" rx="11" ry="22"
+                        transform="rotate(45 50 50)"/>
+
+                    <ellipse cx="50" cy="25" rx="11" ry="22"
+                        transform="rotate(90 50 50)"/>
+
+                    <ellipse cx="50" cy="25" rx="11" ry="22"
+                        transform="rotate(135 50 50)"/>
+
+                    <ellipse cx="50" cy="25" rx="11" ry="22"
+                        transform="rotate(180 50 50)"/>
+
+                    <ellipse cx="50" cy="25" rx="11" ry="22"
+                        transform="rotate(225 50 50)"/>
+
+                    <ellipse cx="50" cy="25" rx="11" ry="22"
+                        transform="rotate(270 50 50)"/>
+
+                    <ellipse cx="50" cy="25" rx="11" ry="22"
+                        transform="rotate(315 50 50)"/>
+
+                    <circle cx="50" cy="50" r="13"/>
+
+                </g>
+
+            </svg>
+
+        </div>
+
+        <p id="indicacion">
+            Hacer clic aquí ^^
+        </p>
+
+    </section>
+
+
+    <!-- =========================
+         ESCENA
+    ========================== -->
+
+    <main id="escena">
+
+        <!-- SUELO -->
+        <div id="suelo"></div>
+
+
+        <!-- SEMILLA -->
+        <div id="semilla"></div>
+
+
+        <!-- =========================
+             ÁRBOL
+        ========================== -->
+
+        <div id="arbol">
+
+            <svg
+                id="arbolSvg"
+                viewBox="0 0 1000 850"
+                preserveAspectRatio="xMidYMid meet"
+            >
+
+                <!-- TRONCO -->
+
+                <path
+                    id="tronco"
+                    d="
+                        M 445 850
+                        C 450 805 458 755 468 700
+                        C 477 650 484 595 488 540
+                        C 491 490 490 440 492 390
+                        C 494 340 503 290 515 235
+                        C 521 275 525 325 528 375
+                        C 531 430 533 485 537 540
+                        C 541 600 546 665 552 720
+                        C 558 770 563 815 568 850
+                        Z
+                    "
+                />
+
+
+                <!-- RAMAS -->
+
+                <g id="ramas">
+
+                    <!-- Rama izquierda superior -->
+
+                    <path
+                        class="rama"
+                        d="
+                            M 500 445
+                            C 460 405 420 370 377 346
+                            C 335 323 294 312 252 315
+                            C 239 316 229 319 221 325
+                            C 238 328 254 334 270 342
+                            C 312 362 354 390 393 421
+                            C 430 451 463 477 493 505
+                            Z
+                        "
+                    />
+
+
+                    <!-- Rama izquierda inferior -->
+
+                    <path
+                        class="rama"
+                        d="
+                            M 497 525
+                            C 456 495 414 473 372 463
+                            C 331 453 293 455 260 466
+                            C 250 469 242 474 236 481
+                            C 255 479 275 481 294 486
+                            C 337 497 382 518 425 546
+                            C 452 563 475 580 493 595
+                            Z
+                        "
+                    />
+
+
+                    <!-- Rama izquierda delgada -->
+
+                    <path
+                        class="ramaDelgada"
+                        d="
+                            M 497 375
+                            C 474 340 447 307 420 280
+                            C 393 253 365 233 338 224
+                            C 327 220 317 220 309 224
+                            C 325 231 341 241 355 253
+                            C 385 278 412 307 437 340
+                            C 458 366 475 390 492 413
+                            Z
+                        "
+                    />
+
+
+                    <!-- Rama derecha superior -->
+
+                    <path
+                        class="rama"
+                        d="
+                            M 527 450
+                            C 562 414 599 387 639 369
+                            C 679 351 716 345 749 349
+                            C 762 351 772 355 780 361
+                            C 761 361 744 365 726 372
+                            C 687 386 650 407 617 431
+                            C 584 455 554 480 533 502
+                            Z
+                        "
+                    />
+
+
+                    <!-- Rama derecha inferior -->
+
+                    <path
+                        class="rama"
+                        d="
+                            M 536 535
+                            C 572 508 610 489 649 481
+                            C 687 473 721 476 752 486
+                            C 763 490 770 495 777 502
+                            C 757 499 738 500 719 505
+                            C 680 515 642 533 607 558
+                            C 578 579 554 598 542 610
+                            Z
+                        "
+                    />
+
+
+                    <!-- Rama derecha delgada -->
+
+                    <path
+                        class="ramaDelgada"
+                        d="
+                            M 527 372
+                            C 549 337 572 305 596 278
+                            C 620 251 647 229 675 217
+                            C 687 212 697 213 704 217
+                            C 687 224 672 234 658 246
+                            C 630 270 605 300 584 333
+                            C 565 360 548 386 532 410
+                            Z
+                        "
+                    />
+
+                </g>
+
+
+                <!-- FLORES -->
+
+                <g id="flores"></g>
+
+            </svg>
+
+        </div>
+
+
+        <!-- FLORES QUE CAEN -->
+
+        <div id="floresVolando"></div>
+
+
+        <!-- =========================
+             MENSAJE PRINCIPAL
+        ========================== -->
+
+        <section id="mensaje">
+
+            <div id="textoFinal"></div>
+
+        </section>
+
+
+        <!-- =========================
+             TE AMO
+        ========================== -->
+
+        <div id="amorGrande">
+            TE AMO MAGUUU!!!
+        </div>
+
+
+        <!-- =========================
+             ÚLTIMO MENSAJE
+        ========================== -->
+
+        <div id="mensajeExtra">
+
+            <span>
+                Ah... una cosita mas... &lt;3
+            </span>
+
+            <a
+                href="https://www.roblox.com/games/5289509545/Gacha-Online-RP"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Gacha Online ✨
+            </a>
+
+            <span>
+                se que no es mucho, pero espero te guste,
+                gastate lo que sobro ^^
+            </span>
+
+        </div>
+
+    </main>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

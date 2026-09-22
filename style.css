@@ -1,0 +1,746 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+
+body {
+    background: #faf9f2;
+}
+
+
+/* =================================
+   PANTALLA INICIAL
+================================= */
+
+#inicio {
+    position: fixed;
+    inset: 0;
+
+    z-index: 100;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    background: #faf9f2;
+
+    transition: opacity 1s ease;
+}
+
+
+#inicio.oculto {
+    opacity: 0;
+    pointer-events: none;
+}
+
+
+#florInicial {
+    width: 82px;
+    height: 82px;
+
+    cursor: pointer;
+
+    animation: respirar 2s ease-in-out infinite;
+}
+
+
+#florInicial svg {
+    width: 100%;
+    height: 100%;
+}
+
+
+.florInicialSvg ellipse {
+    fill: #f5bd18;
+}
+
+
+.florInicialSvg circle {
+    fill: #5c3518;
+}
+
+
+#indicacion {
+    margin-top: 22px;
+
+    color: #222;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 17px;
+
+    animation:
+        indicacion 1.3s ease-in-out infinite alternate;
+}
+
+
+@keyframes respirar {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.06);
+    }
+
+}
+
+
+@keyframes indicacion {
+
+    from {
+        opacity: .45;
+    }
+
+    to {
+        opacity: 1;
+    }
+
+}
+
+
+/* =================================
+   ESCENA
+================================= */
+
+#escena {
+    position: fixed;
+    inset: 0;
+
+    overflow: hidden;
+
+    background: #faf9f2;
+}
+
+
+/* =================================
+   SUELO
+================================= */
+
+#suelo {
+    position: absolute;
+
+    left: 7%;
+    right: 7%;
+
+    bottom: 13%;
+
+    height: 2px;
+
+    background: #181818;
+
+    z-index: 20;
+}
+
+
+/* =================================
+   SEMILLA
+================================= */
+
+#semilla {
+    position: absolute;
+
+    left: 50%;
+    top: 43%;
+
+    width: 13px;
+    height: 17px;
+
+    border-radius:
+        50% 50% 55% 55%;
+
+    background: #70411e;
+
+    opacity: 0;
+
+    z-index: 30;
+}
+
+
+#semilla.caer {
+    opacity: 1;
+
+    animation:
+        caerSemilla 1.7s ease-in forwards;
+}
+
+
+@keyframes caerSemilla {
+
+    from {
+        transform:
+            translate(-50%, 0)
+            scale(1);
+    }
+
+    to {
+        transform:
+            translate(-50%, 38vh)
+            scale(.88);
+    }
+
+}
+
+
+/* =================================
+   ÁRBOL
+================================= */
+
+#arbol {
+    position: absolute;
+
+    width: min(66vw, 750px);
+    height: min(78vh, 840px);
+
+    left: 50%;
+
+    bottom: 12.5%;
+
+    transform:
+        translateX(-50%);
+
+    z-index: 10;
+
+    transition:
+        left 2.8s
+        cubic-bezier(.18, .82, .22, 1);
+}
+
+
+#arbol.moverDerecha {
+    left: 80%;
+}
+
+
+#arbolSvg {
+    width: 100%;
+    height: 100%;
+
+    overflow: visible;
+}
+
+
+/* =================================
+   TRONCO
+================================= */
+
+#tronco {
+    fill: #087c68;
+
+    opacity: 0;
+
+    transform-box: fill-box;
+
+    transform-origin:
+        center bottom;
+
+    transform:
+        scaleY(0);
+
+    transition:
+        transform 2.1s
+        cubic-bezier(.15, .9, .25, 1),
+
+        opacity .15s ease;
+}
+
+
+#arbol.crecer #tronco {
+    opacity: 1;
+
+    transform:
+        scaleY(1);
+}
+
+
+/* =================================
+   RAMAS
+================================= */
+
+.rama,
+.ramaDelgada {
+    fill: #087c68;
+
+    opacity: 0;
+
+    transform-box: fill-box;
+
+    transform-origin:
+        center bottom;
+
+    transform:
+        scale(.04);
+
+    transition:
+        transform 1.35s
+        cubic-bezier(.12, .9, .25, 1),
+
+        opacity .3s ease;
+}
+
+
+#arbol.ramasCreciendo .rama,
+#arbol.ramasCreciendo .ramaDelgada {
+    opacity: 1;
+
+    transform:
+        scale(1);
+}
+
+
+/* =================================
+   FLORES DEL CORAZÓN
+================================= */
+
+#flores {
+    overflow: visible;
+}
+
+
+.florArbol {
+    opacity: 0;
+}
+
+
+.florArbol .florAnimada {
+
+    transform-box: fill-box;
+
+    transform-origin: center;
+
+    transform:
+        scale(0);
+
+    transition:
+        transform .38s
+        cubic-bezier(.15, .9, .3, 1),
+
+        opacity .25s ease;
+}
+
+
+.florArbol.visible {
+    opacity: 1;
+}
+
+
+.florArbol.visible .florAnimada {
+    transform:
+        scale(1);
+}
+
+
+/* =================================
+   FLORES VOLANDO
+================================= */
+
+#floresVolando {
+    position: absolute;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: 40;
+}
+
+
+.florVolando {
+
+    position: absolute;
+
+    width: 18px;
+    height: 18px;
+
+    opacity: 0;
+
+    animation:
+        florVuela
+        linear
+        forwards;
+}
+
+
+.florVolando .petalo {
+
+    position: absolute;
+
+    left: 6px;
+    top: 6px;
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #f5bd18;
+}
+
+
+.florVolando .p1 {
+    transform:
+        rotate(0deg)
+        translateY(-5px);
+}
+
+
+.florVolando .p2 {
+    transform:
+        rotate(60deg)
+        translateY(-5px);
+}
+
+
+.florVolando .p3 {
+    transform:
+        rotate(120deg)
+        translateY(-5px);
+}
+
+
+.florVolando .p4 {
+    transform:
+        rotate(180deg)
+        translateY(-5px);
+}
+
+
+.florVolando .p5 {
+    transform:
+        rotate(240deg)
+        translateY(-5px);
+}
+
+
+.florVolando .p6 {
+    transform:
+        rotate(300deg)
+        translateY(-5px);
+}
+
+
+.florVolando .centro {
+
+    position: absolute;
+
+    left: 7px;
+    top: 7px;
+
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: #603613;
+}
+
+
+@keyframes florVuela {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            translate3d(0, -20px, 0)
+            rotate(0deg)
+            scale(.7);
+    }
+
+    8% {
+        opacity: 1;
+    }
+
+    65% {
+        opacity: .9;
+    }
+
+    88% {
+        opacity: .65;
+    }
+
+    100% {
+
+        opacity: 0;
+
+        transform:
+            translate3d(var(--x), 115vh, 0)
+            rotate(var(--r))
+            scale(.82);
+    }
+
+}
+
+
+/* =================================
+   MENSAJE PRINCIPAL
+================================= */
+
+#mensaje {
+
+    position: absolute;
+
+    left: 7%;
+    top: 18%;
+
+    width:
+        min(41vw, 440px);
+
+    z-index: 60;
+
+    pointer-events: none;
+}
+
+
+#textoFinal {
+
+    color: #171717;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(16px, 1.65vw, 24px);
+
+    line-height: 1.62;
+
+    font-weight: 600;
+
+    text-align: left;
+}
+
+
+/* =================================
+   CURSOR
+================================= */
+
+.cursor {
+
+    display: inline-block;
+
+    width: 2px;
+
+    height: 1em;
+
+    margin-left: 3px;
+
+    vertical-align: -2px;
+
+    background: #222;
+
+    animation:
+        cursor .7s infinite;
+}
+
+
+@keyframes cursor {
+
+    0%,
+    45% {
+        opacity: 1;
+    }
+
+    46%,
+    100% {
+        opacity: 0;
+    }
+
+}
+
+
+/* =================================
+   TE AMO MAGUUU
+================================= */
+
+#amorGrande {
+
+    position: absolute;
+
+    left: 7%;
+    top: 57%;
+
+    width: 42vw;
+
+    color: #d69a00;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(27px, 3.4vw, 48px);
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+
+    text-align: center;
+
+    z-index: 55;
+
+    opacity: 0;
+
+    transform:
+        scale(.85);
+
+    transition:
+        opacity 1s ease,
+
+        transform 1s
+        cubic-bezier(.2, .9, .3, 1);
+}
+
+
+#amorGrande.visible {
+
+    opacity: 1;
+
+    transform:
+        scale(1);
+}
+
+
+/* =================================
+   ÚLTIMO MENSAJE
+================================= */
+
+#mensajeExtra {
+
+    position: absolute;
+
+    left: 7%;
+    top: 73%;
+
+    width:
+        min(42vw, 460px);
+
+    color: #222;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(12px, 1.35vw, 18px);
+
+    line-height: 1.55;
+
+    text-align: left;
+
+    z-index: 65;
+
+    opacity: 0;
+
+    transform:
+        translateY(15px);
+
+    pointer-events: none;
+
+    transition:
+        opacity 1s ease,
+
+        transform 1s ease;
+}
+
+
+#mensajeExtra.visible {
+
+    opacity: 1;
+
+    transform:
+        translateY(0);
+
+    pointer-events: auto;
+}
+
+
+#mensajeExtra a {
+
+    color: #087c68;
+
+    font-weight: bold;
+
+    text-decoration: underline;
+
+    cursor: pointer;
+
+    pointer-events: auto;
+}
+
+
+#mensajeExtra a:hover {
+    opacity: .75;
+}
+
+
+/* =================================
+   RESPONSIVE
+================================= */
+
+@media (max-width: 800px) {
+
+    #arbol {
+
+        width: 80vw;
+
+        height: 72vh;
+    }
+
+
+    #arbol.moverDerecha {
+        left: 88%;
+    }
+
+
+    #mensaje {
+
+        left: 6%;
+
+        top: 15%;
+
+        width: 44vw;
+    }
+
+
+    #textoFinal {
+
+        font-size:
+            clamp(13px, 2.7vw, 19px);
+    }
+
+
+    #mensajeExtra {
+
+        left: 6%;
+
+        top: 76%;
+
+        width: 44vw;
+
+        font-size:
+            clamp(11px, 2.3vw, 16px);
+    }
+
+}
